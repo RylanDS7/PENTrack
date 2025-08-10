@@ -4,7 +4,7 @@
 cd ../..
 ./PENTrack 0 test/HarmonicFieldTest/config_B0z.in test/HarmonicFieldTest/
 cd test/HarmonicFieldTest
-root -l -q -c '../../out/TREEendlog.c("BFCut.out")'
+root -l -q '../../out/TREEendlog.c("BFCut.out")'
 rm BFCut.out
 mv BFCut.out.root B0z.out.root
 
@@ -12,7 +12,7 @@ mv BFCut.out.root B0z.out.root
 cd ../..
 ./PENTrack 0 test/HarmonicFieldTest/config_B0z_rot.in test/HarmonicFieldTest/
 cd test/HarmonicFieldTest
-root -l -q -c '../../out/TREEendlog.c("BFCut.out")'
+root -l -q '../../out/TREEendlog.c("BFCut.out")'
 rm BFCut.out
 mv BFCut.out.root B0z_rot.out.root
 
@@ -20,7 +20,7 @@ mv BFCut.out.root B0z_rot.out.root
 cd ../..
 ./PENTrack 0 test/HarmonicFieldTest/config_B0z_G10.in test/HarmonicFieldTest/
 cd test/HarmonicFieldTest
-root -l -q -c '../../out/TREEendlog.c("BFCut.out")'
+root -l -q '../../out/TREEendlog.c("BFCut.out")'
 rm BFCut.out
 mv BFCut.out.root B0z_G10.out.root
 
@@ -28,7 +28,7 @@ mv BFCut.out.root B0z_G10.out.root
 cd ../..
 ./PENTrack 0 test/HarmonicFieldTest/config_B0z_G10_off.in test/HarmonicFieldTest/
 cd test/HarmonicFieldTest
-root -l -q -c '../../out/TREEendlog.c("BFCut.out")'
+root -l -q '../../out/TREEendlog.c("BFCut.out")'
 rm BFCut.out
 mv BFCut.out.root B0z_G10_off.out.root
 
@@ -36,6 +36,6 @@ mv BFCut.out.root B0z_G10_off.out.root
 cd ../..
 ./PENTrack 0 test/HarmonicFieldTest/config_B0z_G10_rot.in test/HarmonicFieldTest/
 cd test/HarmonicFieldTest
-root -l -q -c '../../out/TREEendlog.c("BFCut.out")'
+root -l -q '../../out/TREEendlog.c("BFCut.out")'
 rm BFCut.out
 mv BFCut.out.root B0z_G10_rot.out.root

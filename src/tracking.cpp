@@ -388,7 +388,7 @@ double TTracker::IntegrateSpin(const std::unique_ptr<TParticle>& p, state_type &
     }
     else if (Babs1 == 0 && Babs2 > 0){ // if particle enters magnetic field we generate a random polarization
 //        std::cout << x1 << ": Entering magnetic field\n";
-        int spinProjection = uniform_int_distribution(0, 1)(mc)*2 - 1;
+        int spinProjection = uniform_int_distribution<int>(0, 1)(mc)*2 - 1;
         std::fill(spin.begin(), spin.end(), 0); // reset spin vector
         return spinProjection;
     }    

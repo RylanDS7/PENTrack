@@ -138,13 +138,9 @@ std::vector<TCollision> TTriangleMesh::Collision(const std::vector<double> &p1, 
         std::vector<CIntersection> out;
         it.tree->all_intersections(segment, std::back_inserter(out)); // search intersections of segment with mesh
         for (auto &i: out){
-            const CPoint *collp = boost::get<CPoint>(&(i->first));
-            if (collp) { // if intersection is a point
-                CVector n = CGAL::Polygon_mesh_processing::compute_face_normal(i->second, *it.mesh);
-                colls.push_back(TCollision(segment, n, *collp, it.ID)); // add collision to list
-            }
-            else
-                throw std::runtime_error("Segment-triangle intersection happened to not be a point");
+            const CPoint collp = boost::get<CPoint>(i->first);
+            CVector n = CGAL::Polygon_mesh_processing::compute_face_normal(i->second, *it.mesh);
+            colls.push_back(TCollision(segment, n, collp, it.ID)); // add collision to list
         }
     }
 
