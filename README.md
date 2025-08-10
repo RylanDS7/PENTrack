@@ -29,7 +29,7 @@ GCC 4.7.2 and newer should work. GCC 4.8.2 seems to break the CGAL library on so
 
 The [Boost C++ libraries](https://www.boost.org/) are a prerequisite for the CGAL library. Additionally, the simulation uses the [odeint integrator](http://headmyshoulder.github.io/odeint-v2/) included in Boost 1.53.0 and newer. Boost is included in most Linux OSs; should you need to download and compile it manually, you may have to adjust the search path of cmake by calling cmake with `-DBOOST_ROOT=/path/to/boost`.
 
-Boost 1.53.0 - 1.69.0 have been tested. Boost 1.64.0 is unusable as it contains [a bug](https://svn.boost.org/trac10/ticket/12516) that prevents compiling PENTrack.
+Boost 1.64.0 is unusable as it contains [a bug](https://svn.boost.org/trac10/ticket/12516) that prevents compiling PENTrack.
 
 ### GMP and MPFR
 
