@@ -10,7 +10,7 @@ simtype 1
 simcount 100
 
 # max. simulation time [s]
-simtime 1000
+simtime 5
 
 # path of file containing materials, paths are assumed to be relative to this config file's path
 materials_file materials.in
@@ -47,7 +47,7 @@ logtype ROOT
 1	ignored				default
 2   guide-5.STL    PolishedSteel
 3   endcap-5.STL    PolishedSteel
-4   detector-5.STL    UCNdet
+4   detector-5.STL    PolishedSteel
 
 
 
@@ -268,11 +268,11 @@ tracklogvars jobnumber particle polarisation t x y z vx vy vz H E Bx dBxdx dBxdy
 trackloginterval 5e-3	# min. distance interval [m] between track points in tracklog file
 tracklogfilter
 
-hitlog 0			# print geometry hits to file [0/1]
+hitlog 1			# print geometry hits to file [0/1]
 hitlogvars jobnumber particle t x y z v1x v1y v1z pol1 v2x v2y v2z pol2 nx ny nz solid1 solid2
 hitlogfilter
 
-snapshotlog 1		# print initial state and state at certain times to file [0/1]
+snapshotlog 0		# print initial state and state at certain times to file [0/1]
 snapshots 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 # times [s] at which to take snapshots
 snapshotlogvars jobnumber particle tstart xstart ystart zstart vxstart vystart vzstart polstart Sxstart Systart Szstart Hstart Estart Bstart Ustart solidstart tend xend yend zend vxend vyend vzend polend Sxend Syend Szend Hend Eend Bend Uend solidend stopID Nspinflip spinflipprob Nhit Nstep trajlength Hmax wL
 snapshotlogfilter
