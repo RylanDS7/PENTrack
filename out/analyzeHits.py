@@ -23,7 +23,7 @@ for particle, t in zip(dfHd_np['particle'], dfHd_np['t']):
 for particle in hit_times:
     hit_times[particle].sort()
 
-def plot_Sz_after_nth_collision(n):
+def filter_Sz_at_nth_collision(n):
     """Plot Sz histogram for all particles after their nth collision (1-indexed)."""
 
     # Build map of particle -> nth hit time (if they have at least n collisions)
@@ -50,16 +50,32 @@ def plot_Sz_after_nth_collision(n):
     if len(Sz_filtered) == 0:
         print(f"No spin entries found after collision {n}.")
         return
+    
+    return Sz_filtered
 
-    plt.figure(figsize=(10, 6))
-    plt.hist(Sz_filtered, bins=100, color='steelblue', edgecolor='black', linewidth=0.5)
-    plt.xlabel('Sz')
-    plt.ylabel('Counts')
-    plt.title(f'Neutron Sz at collision {n} (all particles)')
-    plt.tight_layout()
-    plt.show()
 
-# Plot for whichever collisions you want
-plot_Sz_after_nth_collision(1)
-plot_Sz_after_nth_collision(2)
-plot_Sz_after_nth_collision(3)
+fig, axes = plt.subplots(2, 3, figsize=(18, 8))
+axes = axes.flatten()  # makes indexing easier: axes[0] through axes[5]
+
+for i, ax in enumerate(axes):
+    n = i + 1  # collision number 1-6
+
+    Sz_filtered = filter_Sz_at_nth_collision(n)
+
+    ax.hist(Sz_filtered, bins=100, color='steelblue', edgecolor='black', linewidth=0.5)
+    mean = np.mean(Sz_filtered)
+    ax.text(
+        0.05, 0.95,
+        f'Mean: {mean:.4f}',
+        transform=ax.transAxes,
+        verticalalignment='top',
+        bbox=dict(boxstyle='round', facecolor='white', alpha=0.8)
+    )
+    ax.set_xlabel('Sz')
+    ax.set_ylabel('Counts')
+    ax.set_title(f'Collision {n}')
+
+fig.suptitle('Neutron Sz after nth collision (all particles)', fontsize=14)
+plt.tight_layout()
+plt.savefig('Sz_hist_collisions.png', dpi=150)
+plt.show()

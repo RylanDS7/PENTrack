@@ -7,7 +7,7 @@
 simtype 1
 
 # number of primary particles to be simulated
-simcount 100
+simcount 1000
 
 # max. simulation time [s]
 simtime 5
@@ -20,7 +20,7 @@ secondaries 1
 
 #cut through B-field at time t (simtype == 4) (x1 y1 z1  x2 y2 z2  x3 y3 z3 num1 num2 t)
 #define cut plane by three points and number of sample points in direction 1->2/1->3
-BCutPlane	0 0 0.05	0 0 -0.05	0 0.8 0	500	800  0
+BCutPlane	-0.31 -3 0.337 	-0.31 -1 0.337	  -0.31 -1 0.4	1500	500  0
 
 #parameters to be used for generating a 2d histogram for the mr diffuse reflection probability into a solid angle (simtype == 8)
 #Param order: Fermi pot. [neV], Neut energy [neV], RMS roughness [nm], correlation length [nm], theta_i [0..pi/2]
@@ -45,9 +45,9 @@ logtype ROOT
 # Ignore times are pairs of times [s] in between the solid will be ignored, e.g. 100-200 500-1000.
 #ID	STLfile    material_name    ignore_times
 1	ignored				default
-2   guide-5.STL    PolishedSteel
-3   endcap-5.STL    PolishedSteel
-4   detector-5.STL    PolishedSteel
+2   guide-7.STL    PolishedSteel
+3   endcap-7.STL    PolishedSteel
+4   detector-7.STL    PolishedSteel
 
 
 
@@ -69,7 +69,7 @@ logtype ROOT
 
 sourcemode	STLvolume
 
-STLfile		source-5.STL	# STL volume used for STLvolume/STLsurface source, path is assumed relative to this config file
+STLfile		source-7.STL	# STL volume used for STLvolume/STLsurface source, path is assumed relative to this config file
 
 ### parameter ranges for sourcemode cylvolume/cylsurface/boxvolume
 #			r_min	r_max	phi_min	phi_max	z_min	z_max (cylvolume/cylsurface)
@@ -156,7 +156,7 @@ polarization 1	# initial polarization is randomly chosen, weighted by this varia
 #3 OPERA3D	3Dtable.tab	1		    1		    0		        1
 
 #3Dfield 	table-file	BFieldScale	BoundaryWidth	CoordinateScale
-4 COMSOL	taperV2Field.txt	1E-6		    0		   1 
+4 COMSOL	CalculatedMap-NestedCoil-TapperOrigin-y0=delta0.txt	1		    0		   1 
 
 
 # Simulate magnetic field from a current I flowing from point (x1, y1, z1) to (x2, y2, z2)
@@ -284,7 +284,7 @@ spinlogfilter
 spintimes	0 1000	# do spin tracking between these points in time [s]
 Bmax 0.1			# do spin tracking when absolute magnetic field is below this value [T]
 flipspin 0			# do Monte Carlo spin flips when magnetic field surpasses Bmax [0/1]
-interpolatefields 0	# Interpolate magnetic and electric fields for spin tracking between trajectory step points [0/1]. This will speed up spin tracking in high magnetic fields, but might break spin tracking in weak, quickly oscillating fields!
+interpolatefields 1	# Interpolate magnetic and electric fields for spin tracking between trajectory step points [0/1]. This will speed up spin tracking in high magnetic fields, but might break spin tracking in weak, quickly oscillating fields!
 
 
 ############# set options for individual particle types, overwrites above settings ###############
